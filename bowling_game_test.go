@@ -16,12 +16,19 @@ func TestGameCalculateScore(t *testing.T) {
 	testCases := []testGame{
 		{description: "single frame", throws: []int{1, 4}, expectedResult: 5},
 		{description: "another single frame", throws: []int{2, 6}, expectedResult: 8},
-		{description: "spare", throws: []int{8, 2, 5}, expectedResult: 15},
+		{description: "spare", throws: []int{8, 2, 5, 0}, expectedResult: 20},
+		{description: "another spare", throws: []int{7, 3, 3, 0}, expectedResult: 16},
+		{description: "spare after spare", throws: []int{7, 3, 7, 3, 0, 0}, expectedResult: 27},
+		{description: "spare after spare after spare", throws: []int{7, 3, 7, 3, 7, 3, 0, 0}, expectedResult: 44},
+		{description: "stimple strike 1", throws: []int{10, 0, 7}, expectedResult: 24},
+		{description: "stimple strike 2", throws: []int{10, 2, 7}, expectedResult: 28},
+		{description: "strike after spare", throws: []int{2, 8, 10, 3, 4}, expectedResult: 44},
+		{description: "strike after strike", throws: []int{10, 10, 3, 4}, expectedResult: 47},
 	}
 
-	game := NewGame()
-
 	for _, testCase := range testCases {
+
+		game := NewGame()
 
 		for _, frame := range testCase.throws {
 			game.Add(frame)

@@ -1,7 +1,9 @@
 package main
 
-const Strike = 10
-const NumberOfFrames = 10
+const (
+	Strike         = 10
+	NumberOfFrames = 10
+)
 
 type Frame struct {
 	FirstThrow, SecondThrow int
@@ -19,7 +21,7 @@ func (frame Frame) Score(next, followingNext Frame) int {
 			return frame.FirstThrow + next.Sum()
 		}
 	} else if frame.IsSpare() {
-		return frame.FirstThrow + frame.SecondThrow + next.FirstThrow
+		return frame.Sum() + next.FirstThrow
 	} else {
 		return frame.FirstThrow + frame.SecondThrow
 	}
@@ -56,7 +58,12 @@ func (game *Game) Add(pins int) {
 		} else {
 			game.frames[game.currentFrame] = NewFrame(game.currentFrameValue, pins)
 			game.currentFrameEnded = true
+			game.currentFrame++
 		}
+	} else {
+		game.frames[game.currentFrame] = NewFrame(pins, 0)
+		game.currentFrameEnded = true
+		game.currentFrame++
 	}
 }
 
