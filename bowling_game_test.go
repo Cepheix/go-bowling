@@ -66,6 +66,10 @@ func TestFrameCalculateScore(t *testing.T) {
 		{description: "single frame 2", throws: []int{2, 2, 0, 0, 0, 0}, expectedResult: 4},
 		{description: "single frame 3", throws: []int{3, 5, 0, 0, 0, 0}, expectedResult: 8},
 		{description: "single frame 4", throws: []int{1, 8, 0, 0, 0, 0}, expectedResult: 9},
+		{description: "spare 1", throws: []int{1, 9, 0, 0, 0, 0}, expectedResult: 10},
+		{description: "spare 2", throws: []int{1, 9, 4, 0, 0, 0}, expectedResult: 14},
+		{description: "spare 3", throws: []int{1, 9, 2, 0, 0, 0}, expectedResult: 12},
+		{description: "spare 4", throws: []int{1, 9, 10, 0, 0, 0}, expectedResult: 20},
 	}
 
 	for _, testCase := range testCases {

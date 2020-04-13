@@ -19,7 +19,7 @@ func (frame Frame) Score(next, followingNext Frame) int {
 			return frame.FirstThrow + next.Sum()
 		}
 	} else if frame.IsSpare() {
-		return frame.FirstThrow + next.FirstThrow
+		return frame.FirstThrow + frame.SecondThrow + next.FirstThrow
 	} else {
 		return frame.FirstThrow + frame.SecondThrow
 	}
