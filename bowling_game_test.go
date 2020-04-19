@@ -24,6 +24,7 @@ func TestGameCalculateScore(t *testing.T) {
 		{description: "stimple strike 2", throws: []int{10, 2, 7}, expectedResult: 28},
 		{description: "strike after spare", throws: []int{2, 8, 10, 3, 4}, expectedResult: 44},
 		{description: "strike after strike", throws: []int{10, 10, 3, 4}, expectedResult: 47},
+		{description: "full game example", throws: []int{1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 7}, expectedResult: 125},
 	}
 
 	for _, testCase := range testCases {
